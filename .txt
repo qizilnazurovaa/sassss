@@ -1,0 +1,4 @@
+ npm i node-sass 
+ npm init 
+ "sass":"node-sass assets/sass/style.scss -o assets/css -w"
+npm run sass
