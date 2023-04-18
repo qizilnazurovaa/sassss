@@ -2,3 +2,14 @@
  npm init 
  "sass":"node-sass assets/sass/style.scss -o assets/css -w"
 npm run sass
+
+let cards = document.querySelector(".cards")
+let btn=document.getElementById("btn")
+
+btn.addEventListener('click', () => {
+	innerHTML="";
+	var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+	cards.style.backgroundColor ="#"+randomColor;
+	cards.innerHTML = randomColor;
+
+})
