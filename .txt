@@ -13,3 +13,66 @@ btn.addEventListener('click', () => {
 	cards.innerHTML = randomColor;
 
 })
+
+
+const AddBtn = document.getElementById("AddBtn0")
+const cardBody = document.getElementById("card__body")
+const input=document.getElementsByClassName("inp")
+let cars = [];
+let id = 0;
+
+class Base {
+    constructor() {
+        this.id = id,
+            this.isDeleted = false,
+            this.createdAt = new Date(),
+            this.modifedAt = new Date()
+        id++
+    }
+}
+class Car extends Base {
+    constructor(engine, gearBox,Ban,image,price,km,litr,brand,model,year) {
+        super()
+        this.engine = engine,
+        this.gearBox=gearBox,
+        this.Ban=Ban,
+        this.image=image,
+        this.price=price,
+        this.kim=km,
+        this.litr=litr,
+        this.brand=brand,
+        this.year=year,
+        this.model=model
+    }
+}
+function addCars(engine, gearBox, Ban, image, price, km, litr, brand, model, year) {
+    if (image == '') {
+        image = "https://returntofreedom.org/store/wp-content/uploads/default-placeholder.png"
+    }
+    let newCar = new Car(engine, gearBox, Ban, image, price, km, litr, brand, model, year);
+    cars.push(newCar);
+    renderList(cars)
+}
+function renderList(array) {
+    let innerHTML = "";
+    for (let i = 0; i < array.length; i++) {
+        const { engine, gearBox, Ban, image, price, km, litr, brand, model, year  } = array[i];
+        innerHTML +=` <div class="col-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="${image}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${brand} ${model} ${year} ${price} </h5>
+                            <p class="card-text">${engine, gearBox, Ban, km, litr}</p>
+                            <button class="btn btn-danger" onclick="addCars()">Delete</button>  
+                </div>`
+    }
+    cardBody.innerHTML = innerHTML;
+}
+addBtn.onclick = function () {
+    let brandname = input.value
+    let modelname = input.value
+    let carimage = input.value
+    let carprice= input.value
+    addCars(brandname, carprice, carimage,modelname)
+
+}
